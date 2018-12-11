@@ -5,7 +5,7 @@
     </div>
     <div class="row">
       <div class="col-2" v-for="card in opponent.hand">
-        <div v-if="card.visible">
+        <div v-if="card.visible" @click="setOpponentCard(card.id)">
           <img :src="card.img" height="100px">
           <p>{{card.name}}</p>
           <p>Attack: {{card.attack}}</p>
@@ -13,7 +13,7 @@
           <p>Health: {{card.health}}</p>
         </div>
         <div v-else>
-          <img src="/src/assets/hidden-card1.png" alt="hidden-card">
+          <img src="/src/assets/hidden-card1.png" height="150px" width="100px" alt="hidden-card">
         </div>
       </div>
     </div>
@@ -30,11 +30,13 @@
     },
     computed: {
       opponent() {
-        return this.$store.state.game.opponent
+        return this.$store.state.game.opponent || []
       }
     },
     methods: {
-
+      setOpponentCard(cardId) {
+        return this.$store.dispatch('setOpponentCard', cardId)
+      }
     }
   }
 

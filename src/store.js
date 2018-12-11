@@ -10,13 +10,25 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    game: {},
-    players: [],
-    opponents: []
+    game: {
+      player: {
+        hand: []
+      },
+      opponent: {
+        hand: [],
+        cardId: ''
+      }
+    },
   },
   mutations: {
     setGame(state, game) {
       state.game = game
+    },
+    setPlayerCard(state, cardId) {
+      Vue.set(state.game.player, "cardId", cardId)
+    },
+    setOpponentCard(state, cardId) {
+      Vue.set(state.game.opponent, "cardId", cardId)
     }
   },
   actions: {
@@ -32,9 +44,17 @@ export default new Vuex.Store({
       gameApi.get("/games/" + gameId)
         .then(res => commit('setGame', res.data.data))
     },
-    playTurn({ commit }, gameId) {
+    playGame({ commit }, gameId) {
       gameApi.get("/games/" + gameId)
         .then(res => commit('setGame', res.data.game))
+    },
+    setPlayerCard({ commit }, cardId) {
+      console.log(cardId)
+      commit('setPlayerCard', cardId)
+    },
+    setOpponentCard({ commit }, cardId) {
+      console.log(cardId)
+      commit('setOpponentCard', cardId)
     }
   }
 })

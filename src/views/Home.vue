@@ -5,7 +5,7 @@
     <h1>Cards</h1>
     <form action="">
       <button class="btn btn-success" @click="startGame">Start Game</button>
-      <input type="text" placeholder="Enter Name" v-model="newGame.gameConfig.playerName">
+      <input type="text" placeholder="Enter Player Name" v-model="newGame.gameConfig.playerName">
       <input type="number" placeholder="Select Deck 1-4" max="4" min="1" v-model="newGame.gameConfig.set">
     </form>
   </div>
