@@ -1,11 +1,8 @@
 <template>
   <div class="opponent container-fluid">
     <div class="row justify-content-center">
-      <h2>{{opponent.name}}</h2>
-    </div>
-    <div class="row">
       <div class="col-2" v-for="card in opponent.hand">
-        <div @click="setOpponentCard(card.id)">
+        <div class="card" @click="setOpponentCard(card.id)">
           <img :src="card.img" height="100px">
           <p>{{card.name}}</p>
           <p>Attack: {{card.attack}}</p>
@@ -17,6 +14,9 @@
           <img src="@/assets/hidden-card1.png" @click="setOpponentCard(card.id)" height="150px" width="100px" alt="hidden-card">
         </div> -->
       </div>
+    </div>
+    <div class="row justify-content-center">
+      <h2>{{opponent.name}}</h2>
     </div>
   </div>
 </template>
@@ -43,7 +43,9 @@
 
 </script>
 
-<style>
-
-
+<style scoped>
+  .card {
+    background-color: rgb(204, 122, 29);
+    color: black;
+  }
 </style>

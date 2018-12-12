@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
       <h2>{{player.name}}</h2>
     </div>
-    <div class="row">
+    <div class="row justify-content-center">
       <div class="col-2" v-for="card in player.hand">
         <div class="card" @click="setPlayerCard(card.id)">
           <img :src="card.img" height="100px">

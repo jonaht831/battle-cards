@@ -3,7 +3,8 @@
     <div class="row">
       <opponent class="col-12" />
     </div>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center d-flex flex-column">
+      <h4>Select two cards to battle</h4>
       <button v-if="activeCards.playerCardId && activeCards.opponentCardId" class="btn btn-warning" type="button"
         @click="attack">Attack</button>
       <player class="col-12" />
