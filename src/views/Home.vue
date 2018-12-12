@@ -3,8 +3,8 @@
     <h1>Battle</h1>
     <img alt="Vue logo" src="../assets/logo.png">
     <h1>Cards</h1>
-    <form action="">
-      <button class="btn btn-success" @click="startGame">Start Game</button>
+    <form @submit.prevent="startGame">
+      <button class="btn btn-success" type="submit">Start Game</button>
       <input type="text" placeholder="Enter Player Name" v-model="newGame.gameConfig.playerName">
       <input type="number" placeholder="Select Deck 1-4" max="4" min="1" v-model="newGame.gameConfig.set">
     </form>

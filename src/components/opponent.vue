@@ -5,16 +5,17 @@
     </div>
     <div class="row">
       <div class="col-2" v-for="card in opponent.hand">
-        <div v-if="card.visible" @click="setOpponentCard(card.id)">
+        <div @click="setOpponentCard(card.id)">
           <img :src="card.img" height="100px">
           <p>{{card.name}}</p>
           <p>Attack: {{card.attack}}</p>
           <p>Defense: {{card.defense}}</p>
           <p>Health: {{card.health}}</p>
         </div>
-        <div v-else>
-          <img src="/src/assets/hidden-card1.png" height="150px" width="100px" alt="hidden-card">
-        </div>
+        <!-- <div v-else>
+          v-if="card.visible"
+          <img src="@/assets/hidden-card1.png" @click="setOpponentCard(card.id)" height="150px" width="100px" alt="hidden-card">
+        </div> -->
       </div>
     </div>
   </div>

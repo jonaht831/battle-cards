@@ -1,12 +1,16 @@
 <template>
-  <div class="game">
+  <div v-if="!game.over" class="game">
     <div class="row">
       <opponent class="col-12" />
     </div>
     <div class="row justify-content-center">
-      <button class="btn btn-warning" type="button" @click="attack">Attack</button>
+      <button v-if="activeCards.playerCardId && activeCards.opponentCardId" class="btn btn-warning" type="button"
+        @click="attack">Attack</button>
       <player class="col-12" />
     </div>
+  </div>
+  <div v-else>
+    {{game.winner}}
   </div>
 </template>
 
@@ -15,9 +19,20 @@
   import opponent from '@/components/opponent.vue'
   export default {
     name: 'game',
+    mounted() {
+      this.$store.dispatch('getGame', this.$route.params.gameId)
+    },
     data() {
       return {
         cardId: ''
+      }
+    },
+    computed: {
+      activeCards() {
+        return this.$store.state.activeCards
+      },
+      game() {
+        return this.$store.state.game
       }
     },
     components: {
@@ -25,8 +40,8 @@
       opponent
     },
     methods: {
-      attack(cardId) {
-
+      attack() {
+        this.$store.dispatch('attack', { gameId: this.$route.params.gameId, data: this.activeCards })
       }
     }
   }

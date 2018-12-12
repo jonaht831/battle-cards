@@ -41,6 +41,7 @@
 
 <style scoped>
   .card {
+    background-color: rgb(204, 122, 29);
     color: black;
   }
 </style>
